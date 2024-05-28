@@ -1,0 +1,62 @@
+{% extends 'main/content.html' %}
+{% load static %}
+{% block title %}
+1.5. Создание первого приложения
+{% endblock %}
+    {% block head %}Создание первого приложения{% endblock %}
+{% block content %}
+
+    <p align="justify">Веб-приложение или проект Django состоит из отдельных приложений. Вместе они образуют полноценное веб-приложение. Каждое приложение представляет какую-то определенную функциональность или группу функциональностей. Один проект может включать множество приложений. Это позволяет выделить группу задач в отдельный модуль и разрабатывать их относительно независимо от других. Кроме того, мы можем переносить приложение из одного проекта в другой независимо от другой функциональности проекта.</p>
+<p align="justify">При создании проекта он уже содержит несколько приложений по умолчанию. </p>
+<p align="justify">&#149 django.contrib.admin</p>
+<p align="justify">&#149 django.contrib.auth</p>
+<p align="justify">&#149 django.contrib.contenttypes</p>
+<p align="justify">&#149 django.contrib.sessions</p>
+<p align="justify">&#149 django.contrib.messages</p>
+<p align="justify">&#149 django.contrib.staticfiles</p>
+<p align="justify">Список всех приложений можно найти в проекте в файле <strong>settings.py</strong> в переменной <em>INSTALLED_APPS</em></p>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+<div id="highlighter_929447" class="syntaxhighlighter  py"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="py plain">INSTALLED_APPS </code><code class="py keyword">=</code> <code class="py plain">[</code></div><div class="line number2 index1 alt1"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py string">'django.contrib.admin'</code><code class="py plain">,</code></div><div class="line number3 index2 alt2"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py string">'django.contrib.auth'</code><code class="py plain">,</code></div><div class="line number4 index3 alt1"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py string">'django.contrib.contenttypes'</code><code class="py plain">,</code></div><div class="line number5 index4 alt2"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py string">'django.contrib.sessions'</code><code class="py plain">,</code></div><div class="line number6 index5 alt1"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py string">'django.contrib.messages'</code><code class="py plain">,</code></div><div class="line number7 index6 alt2"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py string">'django.contrib.staticfiles'</code><code class="py plain">,</code></div><div class="line number8 index7 alt1"><code class="py plain">]</code></div></div></td></tr></tbody></table></div>
+</nav>
+<p align="justify">И, конечно, мы можем создавать свои приложения, которые реализуют определенный функционал. Так, создадим в проекте, созданном в прошлой теме или новом, первое приложение. Для этого выполним в командной строке/терминале следующую команду: </p>
+
+    <pre class="consoletext" style="background-color: #000000; color: #FFFF;">python manage.py startapp firstapp</pre>
+    </nav>
+    
+    <p align="justify">В результате в проекте Django будет создано приложение firstapp. Имя приложение указывается после startapp. Оно может быть любым. И после выполнения этой команды мы увидим в проекте новую папку, которое будет хранить все файлы созданного приложения: </p>
+    <img src="{% static "images/firstapp1.png" %}" alt="site logo" >
+    <p>Рассмотрим вкратце его структуру:</p>
+    <ul>
+        <li><p>папка <span class="b">migrations</span>: хранит информацию, которая позволяет сопоставить базу данных и определение моделей</p></li>
+        <li><p><span class="b">__init__.py</span>: указывает интерпретатору python, что текущий каталог будет рассматриваться в качестве пакета</p></li>
+        <li><p><span class="b">admin.py</span>: предназначен для административных функций, в частности, здесь призводится регистрация моделей, которые используются в интерфейсе администратора</p></li>
+        <li><p><span class="b">apps.py</span>: определяет конфигурацию приложения</p></li>
+        <li><p><span class="b">models.py</span>: хранит определение моделей, которые описывают используемые в приложении данные</p></li>
+        <li><p><span class="b">tests.py</span>: хранит тесты приложения</p></li>
+        <li><p><span class="b">views.py</span>: определяет функции, которые получают запросы пользователей, обрабатывают их и возвращают ответ</p></li>
+        </ul>
+    <p align="justify">Но пока приложение никак не задействуется. Его надо зарегистрировать в проекте Django. Для этого откроем файл settings.py и добавим в конец массива INSTALLED_APPS наше приложение <em>firstapp</em></p>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">    
+    <div id="highlighter_346433" class="syntaxhighlighter  py"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="py plain">INSTALLED_APPS </code><code class="py keyword">=</code> <code class="py plain">[</code></div><div class="line number2 index1 alt1"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py string">'django.contrib.admin'</code><code class="py plain">,</code></div><div class="line number3 index2 alt2"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py string">'django.contrib.auth'</code><code class="py plain">,</code></div><div class="line number4 index3 alt1"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py string">'django.contrib.contenttypes'</code><code class="py plain">,</code></div><div class="line number5 index4 alt2"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py string">'django.contrib.sessions'</code><code class="py plain">,</code></div><div class="line number6 index5 alt1"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py string">'django.contrib.messages'</code><code class="py plain">,</code></div><div class="line number7 index6 alt2"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py string">'django.contrib.staticfiles'</code><code class="py plain">,</code></div><div class="line number8 index7 alt1"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py string">'firstapp'</code></div><div class="line number9 index8 alt2"><code class="py plain">]</code></div></div></td></tr></tbody></table></div>
+    </nav>
+        <img src="{% static "images/firstapp2.png" %}" alt="site logo" >
+        <p align="justify">В проекте может быть несколько приложений, и каждое из них надо добавлять таким вот образом.</p>
+<p align="justify">Теперь определим какие-нибудь простейшие действия, которые будет выполнять данное приложение, например, отправлять в ответ пользователю строку "Hello World".</p>
+<p align="justify">Для этого перейдем в проекте приложения firstapp к файлу views.py, который по умолчанию должен выглядеть следующим образом:</p>
+<img src="{% static "images/pervy.png" %}" alt="site logo" >
+<p align="justify">Изменим код следующим образом:</p>
+<img src="{% static "images/vtor.png" %}" alt="site logo" >
+<p align="justify">В данном случае мы импортируем класс HttpResponse из стандартного пакета django.http. Затем определяется функция index(), которая в качестве параметра получает объект запроса request. Класс HttpResponse предназначен для создания ответа, который отправляется пользователю. И с помощью выражения return HttpResponse("Hello World!") мы отправляем пользователю строку "Hello World!"</p>
+<p align="justify">Теперь также в проекте Django откроем файл urls.py, который позволяет сопоставить маршруты с представлениями, которые будут обрабатывать запрос по этим маршрутам. По умолчанию этот файл выглядит следующим образом: </p>
+<img src="{% static "images/trety.png" %}" alt="site logo" >
+<p align="justify">Первой строкой из модуля django.contrib импортируется класс AdminSite, который предоставляет возможности работы с интерфейсом администратора. Второй строкой из модуля django.urls импортируется функция path. Эта функция задает сопоставление определенного маршрута с функцией обработки. Так, в данном случае маршрут "admin/" будет обрабатываться методом admin.site.urls. </p>
+<p align="justify">Но выше мы определили функцию index в файле views.py, который возвращает пользователю строку "Hello World". Поэтому изменим файл urls.py следующим образом:</p>
+<img src="{% static "images/chetvert.png" %}" alt="site logo" >
+<p align="justify">Чтобы использовать функцию views.index вначале импортируем модуль views. Затем определяем сопоставление маршрута '' и функции views.index и также дополнительно имя для маршрута: name='home'. По сути маршрут '' будет сопоставляться с запросом к корню приложения. </p>
+<img src="{% static "images/piat.png" %}" alt="site logo" >
+<p align="justify">Теперь снова запустим приложение командой <em>runserver</em> </p>
+
+<p align="justify"></p>
+<p align="justify">И вновь перейдем в браузере по адресу http://127.0.0.1:8000/, и браузер нам отобразит строку "Hello World":</p>
+<img src="{% static "images/done.png" %}" alt="site logo" >
+{% endblock %}

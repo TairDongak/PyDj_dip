@@ -1,0 +1,45 @@
+{% extends 'main/content.html' %}
+{% load static %}
+{% block title %}
+3.3. Статические файлы
+{% endblock %}
+    {% block head %}Статические файлы{% endblock %}
+{% block content %}
+   
+    <p>Веб-приложение, как правило, использует различные статические файлы - изображения, файлы стилей css, скриптов javascript и так далее. Рассмотрим, как мы можем 
+    использовать подобые файлы.</p>
+    <p>Возьмем проект из прошлой темы, где обсуждалось создание шаблонов.</p>
+    <img class="displayed" src="{% static "images/3/2.6.png" %}"  alt="Статические файлы в Django">
+    <p>Добавим в корневую папку проекта новый каталог <span class="b">static</span>. Чтобы не сваливать все статические файлы в кучу, определим для каждого типа 
+    файлов отдельные папки. В частности, создадим в папке static для изображений каталог <span class="b">images</span>, а для стилей - каталог 
+    <span class="b">css</span>. Подобным образом можно создавать папки и для других типов файлов.</p>
+    <p>В папку <span class="ii">static/images</span> добавим какое-нибудь изображение, а в папке <span class="ii">static/css</span> определим новый 
+    файл <span class="b">styles.css</span>.</p>
+    <img class="displayed" src="{% static "images/3/2.7.png" %}" alt="Static files in Django">
+    <p>Определим в файле <span class="b">styles.css</span> следующий код:</p>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_689324" class="syntaxhighlighter  css"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="css plain">body{ </code><code class="css keyword">font-family</code><code class="css plain">: </code><code class="css color1">Verdana</code><code class="css plain">;}</code></div><div class="line number2 index1 alt1"><code class="css plain">h</code><code class="css value">1</code><code class="css plain">{</code><code class="css keyword">color</code><code class="css plain">:</code><code class="css value">navy</code><code class="css plain">;}</code></div><div class="line number3 index2 alt2"><code class="css plain">img{</code><code class="css keyword">width</code><code class="css plain">:</code><code class="css value">350px</code><code class="css plain">;}</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    <p>Теперь используем эти файлы в шаблоне. Для этого в начале файла шаблона необходимо определить инструкцию</p>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_201944" class="syntaxhighlighter  py"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="py plain">{</code><code class="py keyword">%</code> <code class="py plain">load staticfiles </code><code class="py keyword">%</code><code class="py plain">}</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    <p>При этом данный код должен идти после тега DOCTYPE.</p>
+    <p>Для определения пути к статическим файлам используются выражения типа</p>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_130667" class="syntaxhighlighter  py"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="py plain">{</code><code class="py keyword">%</code> <code class="py plain">static </code><code class="py string">"путь к файлу внутри папки static"</code> <code class="py keyword">%</code><code class="py plain">}</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    <p>Так, возьмем шаблон <span class="b">index.html</span> из папки <span class="ii">templates/firstapp</span> и изменим его следующим образом:</p>
+    
+        <img class="displayed" src="{% static "images/3/htmlscrean.png" %}">
+
+    <p>Чтобы файлы из папки static могли использоваться в приложениях, надо указать путь к данной папке в файле <span class="b">settings.py</span>, добавив в конец файла следующий код:</p>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_531129" class="syntaxhighlighter  py"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="py plain">STATICFILES_DIRS </code><code class="py keyword">=</code> <code class="py plain">[</code></div><div class="line number2 index1 alt1"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py plain">os.path.join(BASE_DIR, </code><code class="py string">"static"</code><code class="py plain">),</code></div><div class="line number3 index2 alt2"><code class="py plain">]</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    <p>Переменная <code>STATICFILES_DIRS</code> указывает, в каких папках искать статические файлы.</p>
+    <img class="displayed" src="{% static "images/3/2.8.png" %}" alt="STATICFILES_DIRS в Django">
+    <p>При запуске приложения шабон index.html будет генерироваться в следующую веб-страницу, которая будет использовать изображение и применять стили:</p>
+    <img class="displayed" src="{% static "images/3/2.9.png" %}"
+    
+{% endblock %}

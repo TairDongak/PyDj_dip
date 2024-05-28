@@ -1,0 +1,45 @@
+{% extends 'main/content.html' %}
+{% load static %}
+{% block title %}
+5.2. Типы полей моделей
+{% endblock %}
+    {% block head %}Типы полей моделей{% endblock %}
+{% block content %}
+
+
+    
+    <p>Для определения моделей мы можем использовать следующие типы полей:</p>
+    <ul>
+    <li><p><strong>BinaryField()</strong>: хранит бинарные данные</p></li>
+    <li><p><strong>BooleanField()</strong>: хранит значение True или False (0 или 1)</p></li>
+    <li><p><strong>NullBooleanField()</strong>: хранит значение True или False или Null</p></li>
+    <li><p><strong>DateField()</strong>: хранит дату</p></li>
+    <li><p><strong>TimeField()</strong>: хранит время</p></li>
+    <li><p><strong>DateTimeField()</strong>: хранит дату и время</p></li>
+    <li><p><strong>DurationField()</strong>: хранит период времени</p></li>
+    <li><p><strong>AutoField()</strong>: хранит целочисленное значение, которое автоматически инкрементируется, обычно применяется для первичных ключей</p></li>
+    
+    <li><p><strong>BigIntegerField()</strong>: представляет число - значение типа Number, которое укладывается в диапазон от 
+    -9223372036854775808 до 9223372036854775807. В зависимости от выбранной СУБД диапазон может немного отличаться</p></li>
+    <li><p><strong>DecimalField(decimal_places=X, max_digits=Y)</strong>: представляет значение типа Number, которое имеет максимум X разрядов и Y знаков после запятой</p></li>
+    <li><p><strong>FloatField()</strong>: хранит, значение типа Number, которое представляет число с плавающей точкой</p></li>
+    <li><p><strong>IntegerField()</strong>: хранит значение типа Number, которое представляет целочисленное значение</p></li>
+    <li><p><strong>PositiveIntegerField()</strong>: хранит значение типа Number, которое представляет положительное целочисленное значение (от 0 до 2147483647)</p></li>
+    <li><p><strong>PositiveSmallIntegerField()</strong>: хранит значение типа Number, которое представляет небольшое положительное целочисленное 
+    значение (от 0 до 32767)</p></li>
+    <li><p><strong>SmallIntegerField()</strong>: хранит значение типа Number, которое представляет небольшое целочисленное 
+    значение (от -32768 до 32767)</p></li>
+    <li><p><strong>CharField(max_length=N)</strong>: хранит строку длиной не более N символов</p></li>
+    <li><p><strong>TextField()</strong>: хранит строку неопределенной длины</p></li>
+    <li><p><strong>EmailField()</strong>: хранит строку, которая представляет email-адрес. Значение автоматически валидируется встроенным валидатором EmailValidator</p></li>
+    <li><p><strong>FileField()</strong>: хранит строку, которая представляет имя файла</p></li>
+    <li><p><strong>FilePathField()</strong>: хранит строку, которая представляет путь к файлу длиной в 100 символов</p></li>
+    <li><p><strong>ImageField()</strong>: хранит строку, которая представляет данные об изображении</p></li>
+    <li><p><strong>GenericIPAddressField()</strong>: хранит строку, которая представляет IP-адрес в формате IP4v или IP6v</p></li>
+    <li><p><strong>SlugField()</strong>: хранит строку, которая может содержать только буквы в нижнем регитре, цифры, дефис и знак подчеркивания</p></li>
+    <li><p><strong>URLField()</strong>: хранит строку, которая представляет валидный URL-адрес</p></li>
+    <li><p><strong>UUIDField()</strong>: хранит строку, которая представляет UUID-идетификатор</p></li>
+    </ul>
+    
+
+{% endblock %}

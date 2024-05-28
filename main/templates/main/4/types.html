@@ -1,0 +1,164 @@
+{% extends 'main/content.html' %}
+{% load static %}
+{% block title %}
+4.2. Типы полей формы
+{% endblock %}
+    {% block head %}Типы полей формы{% endblock %}
+{% block content %}  
+
+    <p>В формах Django мы можем использовать следующие классы для создания полей форм:</p>
+    <ul>
+    <li><p><strong>forms.BooleanField</strong>: создает поле <code>&lt;input type="checkbox" &gt;</code>. Возвращает значение Boolean: 
+    True - если флажок отмечен и False - если флажок не отмечен.</p></li>
+    <li><p><strong>forms.NullBooleanField</strong>: создает следующую разметку:</p>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_770118" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">select</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml plain">&lt;</code><code class="xml keyword">option</code> <code class="xml color1">value</code><code class="xml plain">=</code><code class="xml string">"1"</code> <code class="xml color1">selected</code><code class="xml plain">=</code><code class="xml string">"selected"</code><code class="xml plain">&gt;Unknown&lt;/</code><code class="xml keyword">option</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">option</code> <code class="xml color1">value</code><code class="xml plain">=</code><code class="xml string">"2"</code><code class="xml plain">&gt;Yes&lt;/</code><code class="xml keyword">option</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml plain">&lt;</code><code class="xml keyword">option</code> <code class="xml color1">value</code><code class="xml plain">=</code><code class="xml string">"3"</code><code class="xml plain">&gt;No&lt;/</code><code class="xml keyword">option</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">select</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+   </nav> </li>
+    <li><p><strong>forms.CharField</strong>: предназначен для ввода текста и создает следующую разметку:</p>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_98056" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    <li><p><strong>forms.EmailField</strong>: предназначен для ввода адреса электронной почты и создает следующую разметку:</p>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_725233" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"email"</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    <li><p><strong>forms.GenericIPAddressField</strong>: предназначен для ввода IP-адреса в формате IP4v или IP6v и создает следующую разметку:</p>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_910197" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    <li><p><strong>forms.RegexField (regex="регулярное_выражение")</strong>: предназначен для ввода текста, который должен соответствовать определенному регулярному выражению. Создает текстовое поле:</p>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_712653" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    <li><p><strong>forms.SlugField()</strong>: предназначен для ввода текста, который условно называется "slug", то есть последовательность 
+    символов в нижнем регистре, чисел, дефисов и знаков подчеркивания. Создает текстовое поле:</p>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_896404" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    <li><p><strong>forms.URLField()</strong>: предназначен для ввода ссылок. Создает следующее поле:</p>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_953793" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"url"</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    <li><p><strong>forms.UUIDField()</strong>: предназначен для ввода UUID (универсального уникального идентификатора). Создает следующее поле:</p>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_579582" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    <li><p><strong>forms.ComboField(fields=[field1, field2,..])</strong>: аналогичен обычному текстовому полю за тем исключением, 
+    что требует, чтобы вводимый текст соответствовал требованиям тех полей, которые передаются через параметр fields. Создает следующее поле:</p>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_892987" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    <li><p><strong>forms.MultiValueField(fields=[field1, field2,..])</strong>: предназначен для создания сложных компоновок, состоящих из нескольких полей.</p>
+    </li>
+    <li><p><strong>forms.FilePathField(path="каталог файлов")</strong>: создает список select, который содержит все папки и файлы в определенном каталоге:</p>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_115707" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">select</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">option</code> <code class="xml color1">value</code><code class="xml plain">=</code><code class="xml string">"folder/file1"</code><code class="xml plain">&gt;folder/file1&lt;/</code><code class="xml keyword">option</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">option</code> <code class="xml color1">value</code><code class="xml plain">=</code><code class="xml string">"folder/file2"</code><code class="xml plain">&gt;folder/file2&lt;/</code><code class="xml keyword">option</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">option</code> <code class="xml color1">value</code><code class="xml plain">=</code><code class="xml string">"folder/file3"</code><code class="xml plain">&gt;folder/file3&lt;/</code><code class="xml keyword">option</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml spaces">&nbsp;&nbsp;</code><code class="xml plain">//.............................................</code></div><div class="line number6 index5 alt1"><code class="xml plain">&lt;/</code><code class="xml keyword">select</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    <li><p><strong>forms.FileField()</strong>: предназначен для выбора файла. Создает следующее поле:</p>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_201510" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"file"</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    <li><p><strong>forms.ImageField()</strong>: предназначен также для выбора файла, но при этом добавляет ряд дополнительных возможностей. Создает следующее поле:</p>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_839069" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"file"</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    <li><p><strong>forms.DateField()</strong>: предназначен установки даты. В создаваемое поле вводится текст, который может быть сконвертирован в дату, например, 
+    <code>2017-12-25</code> или <code>11/25/17</code>. 
+    Создает следующее поле:</p>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_669883" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    
+    <li><p><strong>forms.TimeField()</strong>: предназначен ввода времени, например, <code>14:30:59</code> или <code>14:30</code>. Создает следующее поле:</p>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_578428" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    
+    <li><p><strong>forms.DateTimeField()</strong>: предназначен ввода даты и времени, например, <code>2017-12-25 14:30:59</code> или <code>11/25/17 14:30</code>. Создает следующее поле:</p>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_566136" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    
+    <li><p><strong>forms.DurationField()</strong>: предназначен временного промежутка. Вводимый текст должен соответствовать формату "DD HH:MM:SS", 
+    например, <code>2 1:10:20</code> (2 дня 1 час 10 минут 20 секунд). Создает следующее поле:</p>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_544502" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    
+    <li><p><strong>forms.SplitDateTimeField()</strong>: создает два текстовых поля для ввода соответственно даты и времени:</p>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_510102" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">"_0"</code> <code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"text"</code> <code class="xml color1">name</code><code class="xml plain">=</code><code class="xml string">"_1"</code> <code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    
+    <li><p><strong>forms.IntegerField()</strong>: предназначен для ввода чисел. Создает следующее поле:</p>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_860201" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"number"</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    <li><p><strong>forms.DecimalField()</strong>: предназначен для ввода чисел. Создает следующее поле:</p>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_40895" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"number"</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    <li><p><strong>forms.FloatField()</strong>: предназначен для ввода чисел. Создает следующее поле:</p>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_847834" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">input</code> <code class="xml color1">type</code><code class="xml plain">=</code><code class="xml string">"number"</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    
+    <li><p><strong>forms.ChoiceField(choises=кортеж_кортежей)</strong>: генерирует список select, каждый из его элементов формируется на основе отдельного кортежа. 
+    Например, следующее поле:</p>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_293507" class="syntaxhighlighter  py"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="py plain">forms.ChoiceField(choices</code><code class="py keyword">=</code><code class="py plain">((</code><code class="py value">1</code><code class="py plain">, </code><code class="py string">"English"</code><code class="py plain">), (</code><code class="py value">2</code><code class="py plain">, </code><code class="py string">"German"</code><code class="py plain">), (</code><code class="py value">3</code><code class="py plain">, </code><code class="py string">"French"</code><code class="py plain">)))</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    <p>будет генерировать следующую разметку:</p>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_607481" class="syntaxhighlighter  xml"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="xml plain">&lt;</code><code class="xml keyword">select</code><code class="xml plain">&gt;</code></div><div class="line number2 index1 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">option</code> <code class="xml color1">value</code><code class="xml plain">=</code><code class="xml string">"1"</code><code class="xml plain">&gt;English&lt;/</code><code class="xml keyword">option</code><code class="xml plain">&gt;</code></div><div class="line number3 index2 alt2"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">option</code> <code class="xml color1">value</code><code class="xml plain">=</code><code class="xml string">"2"</code><code class="xml plain">&gt;German&lt;/</code><code class="xml keyword">option</code><code class="xml plain">&gt;</code></div><div class="line number4 index3 alt1"><code class="xml spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="xml plain">&lt;</code><code class="xml keyword">option</code> <code class="xml color1">value</code><code class="xml plain">=</code><code class="xml string">"3"</code><code class="xml plain">&gt;French&lt;/</code><code class="xml keyword">option</code><code class="xml plain">&gt;</code></div><div class="line number5 index4 alt2"><code class="xml plain">&lt;/</code><code class="xml keyword">select</code><code class="xml plain">&gt;</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    </li>
+    <li><p><strong>forms.TypeChoiceField(choises=кортеж_кортежей, coerce=функция_преобразования, empty_value=None)</strong>: также 
+    генерирует список select на основе кортежа. Однако дополнительно принимает функцию преобразования, которая преобразует каждый элемент. И также 
+    принимает параметр empty_value, который указывает на значение по умолчанию.</p>
+    </li>
+    
+    <li><p><strong>forms.MultipleChoiceField(choises=кортеж_кортежей)</strong>: также генерирует список select на основе кортежа, как и 
+    forms.ChoiceField, добавляя к создаваемому полю атрибут <code>multiple="multiple"</code>. То есть список поддерживает множественный выбор.</p>
+    </li>
+    <li><p><strong>forms.TypedMultipleChoiceField(choises=кортеж_кортежей, coerce=функция_преобразования, empty_value=None)</strong>: аналог 
+    <code>forms.TypeChoiceField</code> для списка с множественным выбором.</p>
+    </li>
+    </ul>
+    <h3>Виджеты Django</h3>
+    <p>Выше рассмотренные поля при генерации разметки используют определенные виджеты из пакета <strong>forms.widgets</strong>. Например, класс 
+    CharField использует виджет <code>forms.widgets.TextInput</code>, а ChoiceField использует <code>forms.widgets.Select</code>. Но есть ряд виджетов, 
+    которые по умолчанию не используются полями форм, но тем не менее мы их можем задействовать:</p>
+    <ul>
+    <li><p><strong>PasswordInput</strong>: генерирует поле для ввода пароля <code>&lt;input type="password" &gt;</code></p></li>
+    <li><p><strong>HiddenInput</strong>: генерирует скрытое поле <code>&lt;input type="hidden" &gt;</code></p></li>
+    <li><p><strong>MultipleHiddenInput</strong>: генерирует набор скрытых полей</p></li>
+    <li><p><strong>TextArea</strong>: генерирует многострочное текстовое поле <code>&lt;textarea&gt;&lt;/textarea&gt;</code></p></li>
+    <li><p><strong>RadioSelect</strong>: генерирует список переключателей (радиокнопок) <code>&lt;input type="radio" &gt;</code></p></li>
+    <li><p><strong>CheckboxSelectMultiple</strong>: генерирует список флажков <code>&lt;input type="checkbox" &gt;</code></p></li>
+    <li><p><strong>TimeInput</strong>: генерирует поле для ввода времени (например, <code>12:41</code> или <code>12:41:32</code>)</p></li>
+    <li><p><strong>SelectDateWidget</strong>: генерирует три поля select для выбора дня, месяца и года</p></li>
+    <li><p><strong>SplitHiddenDateTimeWidget</strong>: использует скрытое поле для хранения даты и времени</p></li>
+    <li><p><strong>FileInput</strong>: генерирует поле для выбора файла</p></li>
+    </ul>
+    
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'main/content.html' %}
+{% load static %}
+{% block title %}
+4.6. Стилизация полей форм
+{% endblock %}
+    {% block head %}Стилизация полей форм   {% endblock %}
+{% block content %}
+    
+    <p>Поля формы применяют некоторые стили по умолчанию. Если же мы хотим применить к ним какие-то собственные стили и классы, то нам надо использовать ряд механизмов.</p>
+    <p>Прежде всего мы можем вручную выводить каждое поле и определять правила стилизации для этого поля или окружающих его блоков. Возьмем простейшую форму:</p>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_856721" class="syntaxhighlighter  py"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="py keyword">from</code> <code class="py plain">django </code><code class="py keyword">import</code> <code class="py plain">forms</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="py keyword">class</code> <code class="py plain">UserForm(forms.Form):</code></div><div class="line number4 index3 alt1"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py plain">name </code><code class="py keyword">=</code> <code class="py plain">forms.CharField(min_length</code><code class="py keyword">=</code><code class="py value">3</code><code class="py plain">)</code></div><div class="line number5 index4 alt2"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py plain">age </code><code class="py keyword">=</code> <code class="py plain">forms.IntegerField(min_value</code><code class="py keyword">=</code><code class="py value">1</code><code class="py plain">, max_value</code><code class="py keyword">=</code><code class="py value">100</code><code class="py plain">)</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    <p>В шаблоне пропишем ее использование:</p>
+    <img class="displayed" src="{% static "images/4/screenshot1.png" %}">
+    <p>Результа при отправке формы с ошибками:</p>
+    <img class="displayed" src="{% static "images/4/4.13.png" %}" alt="Стилизация форм Django">
+    <p>Второй механизм представляют свойства формы <span class="b">required_css_class</span> и <span class="b">error_css_class</span>, 
+    который соответственно применяют класс css к метке, создаваемой для поля формы, и к блоку ассоциированных с ним ошибок.</p>
+    <p>Например, определим следующую форму:</p>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_54534" class="syntaxhighlighter  py"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="py keyword">from</code> <code class="py plain">django </code><code class="py keyword">import</code> <code class="py plain">forms</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="py keyword">class</code> <code class="py plain">UserForm(forms.Form):</code></div><div class="line number4 index3 alt1"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py plain">name </code><code class="py keyword">=</code> <code class="py plain">forms.CharField(min_length</code><code class="py keyword">=</code><code class="py value">3</code><code class="py plain">)</code></div><div class="line number5 index4 alt2"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py plain">age </code><code class="py keyword">=</code> <code class="py plain">forms.IntegerField(min_value</code><code class="py keyword">=</code><code class="py value">1</code><code class="py plain">, max_value</code><code class="py keyword">=</code><code class="py value">100</code><code class="py plain">)</code></div><div class="line number6 index5 alt1"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py plain">required_css_class </code><code class="py keyword">=</code> <code class="py string">"field"</code></div><div class="line number7 index6 alt2"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py plain">error_css_class </code><code class="py keyword">=</code> <code class="py string">"error"</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    <p>В этом случае в шаблоне у нас должны быть определены или подключены классы "field" и "error":</p>
+    <img class="displayed" src="{% static "images/4/screenshot2.png" %}">
+    <p></p>
+    <img class="displayed" src="{% static "images/4/4.11.png" %}" alt="Стилизация полей формы в Django">
+    <p>Но также можно было бы комбинировать оба способа:</p>
+    <img class="displayed" src="{% static "images/4/screenshot3.png" %}">
+    <p>Третий механизм стилизации представляет установка классов и стилей через виджеты:</p>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_987023" class="syntaxhighlighter  py"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="py keyword">from</code> <code class="py plain">django </code><code class="py keyword">import</code> <code class="py plain">forms</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="py keyword">class</code> <code class="py plain">UserForm(forms.Form):</code></div><div class="line number4 index3 alt1"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py plain">name </code><code class="py keyword">=</code> <code class="py plain">forms.CharField(widget</code><code class="py keyword">=</code><code class="py plain">forms.TextInput(attrs</code><code class="py keyword">=</code><code class="py plain">{</code><code class="py string">"class"</code><code class="py plain">:</code><code class="py string">"myfield"</code><code class="py plain">}))</code></div><div class="line number5 index4 alt2"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py plain">age </code><code class="py keyword">=</code> <code class="py plain">forms.IntegerField(widget</code><code class="py keyword">=</code><code class="py plain">forms.NumberInput(attrs</code><code class="py keyword">=</code><code class="py plain">{</code><code class="py string">"class"</code><code class="py plain">:</code><code class="py string">"myfield"</code><code class="py plain">}))</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    <p>В данном случае через параметр виджетов <code>attrs</code> устанавливаются атрибуты того элемента html, который будет генерироваться. 
+    В частности, здесь для обоих полей устанавливается атрибут <code>class</code>, который представляет класс myfield.</p>
+    <p>И, допустим, в шаблоне будет определен класс myfield:</p>
+    <img class="displayed" src="{% static "images/4/screenshot4.png" %}">
+    <p></p>
+    <img class="displayed" src="{% static "images/4/4.12.png" %}" alt="Стилизация в Django Forms">
+    
+{% endblock %}

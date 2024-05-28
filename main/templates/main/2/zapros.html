@@ -1,0 +1,39 @@
+{% extends 'main/content.html' %}
+{% load static %}
+{% block title %}
+2.1. Обработка запроса
+{% endblock %}
+    {% block head %}Обработка запроса{% endblock %}
+{% block content %}
+
+    <p>Центральным моментом любого веб-приложения является обработка запроса, который отправляет пользователь. В Django за обработку запроса отвечают представления или 
+    <strong>views</strong>. По сути представления представляют функции обработки, которые принимают данные запроса в виде объекта 
+    <strong>request</strong> и генерируют некоторый результат, который затем отправляется пользователю.</p>
+    <p>По умолчанию представления размещаются в приложении в файле <strong>views.py</strong>.</p>
+    <p>Например, возьмем стандартный проект, который добавлено приложение (например, проект созданный в прошлой главе).</p>
+    <img class="displayed" src="{% static "images/3.1.png" %}" alt="site logo" >
+    <p>При создании нового проекта файл <span class="ii">views.py</strong> имеет следующее содержимое:</p>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_829862" class="syntaxhighlighter  py"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="py keyword">from</code> <code class="py plain">django.shortcuts </code><code class="py keyword">import</code> <code class="py plain">render</code></div><div class="line number2 index1 alt1"><code class="py comments"># Create your views here.</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    <p>Данный код пока никак не обрабатывает запросы, он только импортирует функцию <strong>render()</strong>, которая может использоваться для обработки.</p>
+    <p>Генерировать результат можно различными способами. Один из них представляет использование класса <strong>HttpResponse</strong> из 
+    пакета django.http, который позволяет отправить текстовое содержимое.</p>
+    <p>Так, изменим файл <code>views.py</code> следующим образом:</p>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_758260" class="syntaxhighlighter  py"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="py keyword">from</code> <code class="py plain">django.http </code><code class="py keyword">import</code> <code class="py plain">HttpResponse</code></div><div class="line number2 index1 alt1"><code class="py spaces">&nbsp;</code>&nbsp;</div><div class="line number3 index2 alt2"><code class="py keyword">def</code> <code class="py plain">index(request):</code></div><div class="line number4 index3 alt1"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py keyword">return</code> <code class="py plain">HttpResponse(</code><code class="py string">"&lt;h2&gt;Главная&lt;/h2&gt;"</code><code class="py plain">)</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="py keyword">def</code> <code class="py plain">about(request):</code></div><div class="line number7 index6 alt2"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py keyword">return</code> <code class="py plain">HttpResponse(</code><code class="py string">"&lt;h2&gt;О сайте&lt;/h2&gt;"</code><code class="py plain">)</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="py keyword">def</code> <code class="py plain">contact(request):</code></div><div class="line number10 index9 alt1"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py keyword">return</code> <code class="py plain">HttpResponse(</code><code class="py string">"&lt;h2&gt;Контакты&lt;/h2&gt;"</code><code class="py plain">)</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    <p>В данном случае определены три функции, которые будут обрабатывать запросы. Каждая функция принимает в качестве параметра объект request. 
+    Для генерации ответа в конструктор объекта HttpResponse передается некоторая строка. Это может быть в том числе и код html в виде строки.</p>
+    <p>Чтобы эти функции сопоставлялись с запросами, надо определить для них маршруты в проекте в файле <strong>urls.py</strong>. В частности, 
+    изменим этот файл следующим образом:</p>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div><div id="highlighter_879542" class="syntaxhighlighter  py"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help"></a></strong></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="py keyword">from</code> <code class="py plain">django.urls </code><code class="py keyword">import</code> <code class="py plain">path</code></div><div class="line number2 index1 alt1"><code class="py keyword">from</code> <code class="py plain">firstapp </code><code class="py keyword">import</code> <code class="py plain">views</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="py plain">urlpatterns </code><code class="py keyword">=</code> <code class="py plain">[</code></div><div class="line number5 index4 alt2"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py plain">path('', views.index),</code></div><div class="line number6 index5 alt1"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py plain">path(</code><code class="py string">'about'</code><code class="py plain">, views.about),</code></div><div class="line number7 index6 alt2"><code class="py spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="py plain">path(</code><code class="py string">'contact'</code><code class="py plain">, views.contact),</code></div><div class="line number8 index7 alt1"><code class="py plain">]</code></div></div></td></tr></tbody></table></div></div>
+    </nav>
+    <p>Переменная <strong>urlpatterns</strong> определяет набор сопоставлений функций обработки с определенными строками запроса. Например, запрос к корню 
+    веб-сайта будет обрабатываться функцией index, запрос по адресу "about" будет обрабатываться функцией about, а запрос "contact" - функцией contact.</p>
+    <p>Запускаем проект и обратимся по некоторым из этих адресов.</p>
+    <img class="displayed" src="{% static "images/2/3.2.png" %}" alt="site logo" >
+    <img class="displayed" src="{% static "images/2/3.3.png" %}" alt="site logo" >
+    
+{% endblock %}

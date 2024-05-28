@@ -1,0 +1,51 @@
+{% extends 'main/based.html' %}
+{% load static %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+<div class="alert alert-dark mt-2">
+    <h3>Веб-фреймворк Django</h3>
+    <p align="justify">Язык программирования Python исключительно развит сам по себе, но основную
+              мощь ему придают всевозможные дополнительные библиотеки, которые напоминают готовый каркас (по-английски — framework), 
+              на который разработчик конкретного сайта «навешивает» свои узлы, механизмы и детали декора.
+              Один из фреймворков, написанных на языке Python, — Django. Среди всех такого рода разработок его стоит выделить особо. 
+              Хотя бы потому, что он невероятно популярен. Появившись в 2005 году — именно тогда вышла его первая версия, 
+              — он остается одним из популярнейших программных инструментов, предназначенных для разработки веб-сайтов. 
+              Более того, это наиболее часто применяемый на практике веб-фреймворк, разработанный на Python.
+    </p>
+</div>
+
+<div class="row mb-2">
+    <div class="col-md-6">
+      <div style="background-color: rgb(250, 240, 40)" class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3><strong class="d-inline-block mb-2 text-success">Содержание</strong></h3>
+          
+          <p class="card-text mb-auto" >Начните свое знакомство с самым популярным веб-фреймворком - Django</p>
+          <a href="{% url 'vvod' %}" class="stretched-link">Перейти к содержанию</a></span>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+            <img class="displayed" src="{% static "images/Perexod2.png" %}">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div style="background-color: rgb(250, 240, 40)" class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <h3><strong class="d-inline-block mb-2 text-primary">Пройти тест</strong></h3>
+          <p class="mb-auto">Проверьте свои знания в тестировании по основам Django</p>
+          <a href="{% url 'testing' %}" class="stretched-link">Перейти к тестированию</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+            <img class="displayed" src="{% static "images/Perexod.png" %}">
+        </div>
+      </div>
+    </div>
+  </div>
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">© 2021</p>
+    </footer>   
+{% endblock %}

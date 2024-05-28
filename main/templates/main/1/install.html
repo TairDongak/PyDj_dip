@@ -1,0 +1,76 @@
+{% extends 'main/content.html' %}
+{% load static %}
+{% block title %}
+1.1. Установка Django
+{% endblock %}
+{% block head %}Установка Django{% endblock %}
+{% block content %}
+    
+    <h4>Установка Python</h4>  
+    <p align="justify"><div class="section" id="s-install-python">
+<span id="install-python"></span>
+<p class="block-with-comment"><div class="comment-indicator" style="height: 3px;"><span></span></div>Будучи веб-фреймворком Python, Django требует Python. Python содержит базу данных <a class="reference external" href="https://sqlite.org/">SQLite</a>, поэтому вам не обязательно устанавливать базу данных для ознакомления с Django.</p>
+<p class="block-with-comment"><div class="comment-indicator" style="height: 2px;"><span></span></div>Последнюю версию Python можно найти на <a class="reference external" href="https://www.python.org/downloads/">https://www.python.org/downloads/</a>, или установить его с помощью пакетного менеджера вашей операционной системы.</p>
+<p class="block-with-comment"><div class="comment-indicator" style="height: 2px;"><span></span></div>Проверить установлен ли Python можно выполнив команду <code class="docutils literal"><span class="pre">python</span></code> в терминале, вы должны увидеть приблизительно следующее:</p>
+</p>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div class="highlight-default block-with-comment"><div class="comment-indicator" style="height: 5px;"><span></span></div><div class="highlight block-with-comment"><div class="comment-indicator" style="height: 5px;"><span></span></div><pre><span></span><span class="n">Python</span> <span class="mf">3.</span><span class="n">x</span><span class="o">.</span><span class="n">y</span>
+<span class="p">[</span><span class="n">GCC</span> <span class="mf">4.</span><span class="n">x</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
+<span class="n">Type</span> <span class="s2">"help"</span><span class="p">,</span> <span class="s2">"copyright"</span><span class="p">,</span> <span class="s2">"credits"</span> <span class="ow">or</span> <span class="s2">"license"</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></nav>
+<h4>Пакетный менеджер <code class="docutils literal"><span class="pre">PIP</span></code></h4>
+    <p align="justify">Для установки нам потребуется пакетный менеджер pip. Менеджер pip позволяет загружать пакеты и управлять ими. Нередко, при установке python также устанавливается и менеджер pip. В этом случае мы можем проверить версию менеджера, выполнив в командной строке/терминале следующую команду:</p>
+    
+    <div class="console">
+        <pre class="consoletext" style="background-color: #000000; color: #FFFF;">pip -V</pre>
+    </div>
+
+    <p align="justify">Если pip не установлен, то мы увидим ошибку <code>"pip" не является внутренней или внешней командой, исполняемой программой или пакетным файлом</code>. В этом случае нам надо установить pip.</p>
+    <p align="justify">Для этого нам надо загрузить скрипт <a class="reference external" href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a>. Просто перейдем на эту страницу и сохраним все ее содержимое в новый файл get-pip.py. Допустим, данный файл будет сохранен в папку C:\python. Перейдем в папку, где сохранен файл и выполним в командной строке/консоли следующую команду:</p>
+
+    <div class="console">
+        <pre class="consoletext" style="background-color: #000000; color: #FFFF;">python get-pip.py</pre>
+    </div>
+    
+    <img src="{% static "images/1.1.png" %}" alt="1" >
+    <p align="justify">Если pip ранее уже был установлен, то можно его обновить с помощью команды</p>
+    <div class="console">
+        <pre class="consoletext" style="background-color: #000000; color: #FFFF;">pip install --upgrade pip</pre>
+    </div>
+<h4>Установка виртуальной среды</h4>
+    <p align="justify"> Виртуальная среда или virtualenv не является неотъемлимой частью разработки на Django. Однако ее рекомендуется использовать, так как она позволяет создать множество виртуальных сред Python на одной операционной системе. Благодаря виртуальной среде приложение может запускаться независимо от других приложений на Python.</p>
+    <p align="justify"> В принципе можно запускать приложения на Django и без виртуальной среды. В этом случае все пакеты Django устанавливаются глобально. Однако что если после создания первого приложения выйдет новая версия Django? Если мы захотим использовать для второго проекта новую версию Django, то из-за глобальной установки пакетов придется обновлять первый проект, который использует старую версию. Это потребует некоторой дополнительной работы по обновлению, так как не всегда соблюдается обратная совместимость между пакетами. Если мы решим использовать для второго проекта старую версию, то мы лишиемся потенциальных преимуществ новой версии. И использование вируальной среды как раз позволяет разграничить пакеты для каждого проекта.</p>
+    <p align="justify"> Для работы с виртуальной средой вначале необходимо установить пакет virtualenv с помощью следующей команды</p>
+    <div class="console">
+        <pre class="consoletext" style="background-color: #000000; color: #FFFF;">pip install virtualenv</pre>
+    </div>
+    <img src="{% static "images/1.2.png" %}" alt="2" >
+    <p align="justify">Теперь создадим вируальную среду. Вначале определим каталог для виртуальных сред, где будут располагаться все связанные файлы и папки. Например, пусть это будет каталог C:\virtualenv. Прежде всего перейдем в командной строке/терминале в этот каталог с помощью команды cd. Затем для создания виртуальной среды выполним следующую команду:</p>
+    <div class="console">
+        <pre class="consoletext" style="background-color: #000000; color: #FFFF;">python -m venv hello</pre>
+    </div>
+
+    <h4>Активация виртуальной среды</h4>
+    <p align="justify">Для использования виртуальную среду надо активировать. И каждый раз, когда мы будем работать с проектом Django, связанную с ним виртуальную среду надо активировать. Например, активируем выше созданную среду, которая располагается в текущем каталоге в папке hello. Если наша ОС - Windows, то в папке hello/Scripts/ мы можем найти файл activate.bat, который активирует виртуальную среду. Поэтому для Windows активация виртуальной среды будет выглядеть таким образом:</p>
+    <div class="console">
+        <pre class="consoletext" style="background-color: #000000; color: #FFFF;">hello\Scripts\activate.bat</pre>
+    </div>
+    <p align="justify">После окончания работы с виртуальной средой мы можем ее деактивировать. Для этого в той же папке hello/Scripts/ мы можем найти файл deactivate.bat и таким же образом запустить его.</p>
+
+
+    <h4>Установка Django</h4>
+    <p align="justify">В командной строке терминала мы будем задавать команды для установки самого фреймворка Django и дальнейшей его настройки. Для этого вводим следующую команду: </p>
+    <div class="console">
+        <pre class="consoletext" style="background-color: #000000; color: #FFFF;">pip install Django</pre>
+    </div>
+    </nav>
+    <p align="justify">Данная команда установит все необходимые компоненты для обеспечения работоспособности Django и возможности его использования в проекте. В завершении мы должны увидеть что-то подобное и последнюю строчку со словами Successfully installed… означающие успешную установку.</p>
+    <img src="{% static "images/1.4.png" %}" alt="3" >
+    <p></p>
+    <p align="justify">Теперь web-framework Django готов к использованию и можно переходить к процессу создания нашего первого Django проекта.</p>
+</div>
+</div>
+
+
+{% endblock %}
